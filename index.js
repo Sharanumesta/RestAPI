@@ -1,21 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParcer = require('body-parser');
-const { connectDb } = require('./db');
-const {create, read, update, deleted} = require('./routes');
+const connectDb  = require('./db/connectDb.js');
+const studentsRoutes = require('./routes/student.route.js');
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(bodyParcer.json());
 
-app.post('/api/students', create );
-
-app.get('/api/students', read );
-
-app.put("/api/students/", update);
-
-app.delete('/api/students', deleted);
+app.use("/api/v1/students", studentsRoutes);
 
 connectDb().then(() => {
   app.listen(PORT, () => {
