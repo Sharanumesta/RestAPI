@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParcer = require('body-parser');
 const { connectDb } = require('./db');
-const {create, read, update, deleted} = require('./routs');
+const {create, read, update, deleted} = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT || 8080;

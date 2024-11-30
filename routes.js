@@ -62,7 +62,7 @@ const deleted = async (req, res) => {
         }
   
         console.log("Student data deleted successfully");
-        return res.status(201);
+        return res.status(200).json({ message: "Student data deleted successfully" });
   
     } catch (error) {
         console.error("Error deleting student:", error.message);
